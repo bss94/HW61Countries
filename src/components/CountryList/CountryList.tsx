@@ -8,7 +8,10 @@ interface Props {
   onActive: (id: string) => void;
 }
 
-const CountryList: React.FC<Props> = ({countries, onActive}) => {
+const CountryList: React.FC<Props> = ({
+  countries,
+  onActive
+}) => {
   return (
     <ListGroup as="ul" style={{height: '700px', overflowY: 'scroll'}}>
       {countries.map((country) => {

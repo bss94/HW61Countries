@@ -43,15 +43,26 @@ const Countries = () => {
       });
     });
   };
-
+  const closeInfo = () => {
+    setCurrentCode(null);
+    setCountries(prevState => {
+      return prevState.map((country) => {
+        if (country.isActive) {
+          return {...country, isActive: false};
+        }
+        return country;
+      });
+    });
+  };
   return (
-    <Container>
+    <Container className="mt-5">
       <Row>
+        <Col xs={12}><h1>Countries app</h1></Col>
         <Col xs={3}>
           <CountryList countries={countries} onActive={onHandleActive}/>
         </Col>
         <Col xs={9}>
-          <CountryInfo code={currentCode}/>
+          <CountryInfo code={currentCode} closeInfo={closeInfo}/>
         </Col>
       </Row>
     </Container>

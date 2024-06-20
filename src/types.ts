@@ -17,5 +17,5 @@ export interface CurrentCountry {
   borders: string[];
   capital: string;
   region: string;
-  subregion:string;
+  subregion: string;
 }

@@ -7,12 +7,18 @@ interface Props {
   onActive: React.MouseEventHandler;
 }
 
-const CountryItem: React.FC<Props> = ({name, isActive, onActive}) => {
+const CountryItem: React.FC<Props> = React.memo(({
+  name,
+  isActive,
+  onActive
+}) => {
   return (
     <ListGroup.Item as="li" active={isActive} className="text-start" onClick={onActive}>
       {name}
     </ListGroup.Item>
   );
-};
+}, (prevProps, nextProps) => {
+  return prevProps.name === nextProps.name && prevProps.isActive === nextProps.isActive;
+});
 
 export default CountryItem;
